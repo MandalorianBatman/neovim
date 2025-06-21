@@ -1,3 +1,8 @@
 require("config.lazy")
 require("config.option")
-require("config.keybinds")
+if not vim.g.vscode then 
+    require("config.keybinds")
+else 
+    require("config.vscode_keybinds")
+end
+

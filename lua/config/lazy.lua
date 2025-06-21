@@ -21,15 +21,15 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
+local plugin_spec = {}
+
+if not vim.g.vscode then
+  table.insert(plugin_spec, { import = "plugins" })
+else
+  table.insert(plugin_spec, { import = "plugins.flash" })
+end
+
 require("lazy").setup({
-  spec = {
-    -- import your plugins
-    { import = "plugins" },
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
---  install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
+  spec = plugin_spec,
   checker = { enabled = true },
 })
